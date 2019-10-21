@@ -1,22 +1,21 @@
-.app {
-  text-align: center;
-}
-
-.appLogo {
-  height: 40vmin;
-}
-
-.appHeader {
-  background-color: #111725;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.box {
+  display: grid;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.appLink {
-  color: #09d3ac;
+.paper {
+  height: auto;
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+.app {
+  height: 100%;
+  min-height: 100vh;
+  background: url("../../../../assets/images/loginBackground.jpg");
+}
+
+.loginRegisterContainer {
+  background-color: rgba($color: black, $alpha: 0.8) !important;
 }

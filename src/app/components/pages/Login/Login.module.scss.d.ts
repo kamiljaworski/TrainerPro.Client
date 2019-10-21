@@ -1,8 +1,8 @@
 declare const styles: {
+  readonly "box": string;
+  readonly "paper": string;
   readonly "app": string;
-  readonly "appLogo": string;
-  readonly "appHeader": string;
-  readonly "appLink": string;
+  readonly "loginRegisterContainer": string;
 };
 export = styles;
 
