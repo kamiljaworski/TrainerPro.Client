@@ -13,4 +13,4 @@ export interface OwnProps {
     text?: string
 }
 
-export type LoginProps = StateFromProps & DispatchFromProps & OwnProps;
+export type LoginRegisterProps = StateFromProps & DispatchFromProps & OwnProps;

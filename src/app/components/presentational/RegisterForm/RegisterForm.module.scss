@@ -7,3 +7,12 @@
 .loginButton {
     width: 150px;
 }
+
+.selectUserTypeContainer {
+  @extend .loginButtonContainer;
+  margin-bottom: 20px;
+}
+
+.selectUserType {
+  width: 80%;
+}

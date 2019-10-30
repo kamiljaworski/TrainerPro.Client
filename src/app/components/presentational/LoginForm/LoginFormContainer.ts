@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 import { DispatchFromProps } from "./LoginFormProps";
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) : DispatchFromProps =>  ({
-    loginUser: (login, password) => dispatch(loginUser(login, password))
+    loginUser: (loginDto) => dispatch(loginUser(loginDto))
 });
 
 export default connect<null, DispatchFromProps, any, AppState>(

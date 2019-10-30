@@ -2,8 +2,8 @@ import { Dispatch } from 'redux';
 import { AuthorizationState } from '../authorizationState';
 import { LoginUserActions } from './loginUserTypes';
 import { LOGIN_USER_SUCCESS } from '../authorizationTypes';
-import { toast } from "react-toastify";
-
+import * as authorizationService from '../../../services/authorizationService';
+import ILoginDto from '../../../models/authorization/dto/ILoginDto';
 
 const loginUserSuccess = (newState: AuthorizationState): LoginUserActions => ({
     type: LOGIN_USER_SUCCESS,
@@ -11,17 +11,14 @@ const loginUserSuccess = (newState: AuthorizationState): LoginUserActions => ({
 });
 
 
-export const loginUser = (login: string, password: string) =>
+export const loginUser = (loginDto: ILoginDto) =>
     async (dispatch: Dispatch<LoginUserActions>): Promise<boolean> => {
-        // call api
-        const newState = {} as AuthorizationState;
-        newState.loggedIn = true;
-        newState.username = login;
 
-        toast.error("Error!", {
-            position: toast.POSITION.TOP_RIGHT
-        });
+        const response = await authorizationService.loginUser(loginDto);
+        if (response.status === 200) {
+            dispatch(loginUserSuccess(response.data));
+            return true;
+        }
 
-        dispatch(loginUserSuccess(newState));
-        return true;
+        return false;
     }

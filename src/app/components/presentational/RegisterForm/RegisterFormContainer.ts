@@ -3,13 +3,17 @@ import { ThunkDispatch } from "redux-thunk";
 import { AppState } from "../../../store";
 import { registerUser } from "../../../store/authorization/registerUser/registerUserActions";
 import RegisterForm from "./RegisterForm";
-import { DispatchFromProps } from "./RegisterFormProps";
+import { DispatchFromProps, OwnProps, StateFromProps } from "./RegisterFormProps";
+
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
+    onSuccessSubmitCallback: ownProps.onSuccessSubmitCallback
+})
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) : DispatchFromProps =>  ({
-    registerUser: (login, password) => dispatch(registerUser(login, password))
+    registerUser: (registerDto) => dispatch(registerUser(registerDto))
 });
 
-export default connect<null, DispatchFromProps, any, AppState>(
-    null,
+export default connect<StateFromProps, DispatchFromProps, OwnProps, AppState>(
+    mapStateToProps,
     mapDispatchToProps
-)(RegisterForm)
+)(RegisterForm);

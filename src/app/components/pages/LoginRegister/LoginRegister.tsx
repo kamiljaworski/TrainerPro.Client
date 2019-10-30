@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
-import styles from './Login.module.scss';
-import { LoginProps } from './LoginProps';
+import styles from './LoginRegister.module.scss';
+import { LoginRegisterProps } from './LoginRegisterProps';
 import { Grid, Container, Paper, Tab, Tabs } from '@material-ui/core';
 import LoginForm from '../../presentational/LoginForm/LoginFormContainer';
 import RegisterForm from '../../presentational/RegisterForm/RegisterFormContainer';
 import classnames from 'classnames';
 
-const Login: React.FC<LoginProps> = () => {
+const Login: React.FC<LoginRegisterProps> = () => {
   const [tab, setTab] = useState(0);
 
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setTab(newValue);
+    setTab(newValue); 
   };
 
+  const onRegisterSubmitSuccess = () => {
+    setTab(0);
+  }
+
   return (
-    <Container className={styles.app} maxWidth="xl">
+    <Container className={classnames(styles.app, styles.mainContainer)} maxWidth="xl">
       <Grid
         container
         spacing={0}
@@ -24,7 +28,7 @@ const Login: React.FC<LoginProps> = () => {
         className={styles.app}
       >
         <Grid item md={4} >
-          <Paper className={classnames(styles.paper, styles.loginRegisterContainer)}>
+          <Paper className={styles.paper}>
             <Tabs centered
               value={tab}
               indicatorColor="secondary"
@@ -36,8 +40,8 @@ const Login: React.FC<LoginProps> = () => {
               <Tab label="Rejestracja " />
             </Tabs>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-              {tab === 0 ? <LoginForm /> : <RegisterForm />}
+              <Grid item xs={12} className={styles.loginRegisterContainer}>
+              {tab === 0 ? <LoginForm /> : <RegisterForm onSuccessSubmitCallback={onRegisterSubmitSuccess}/>}
               </Grid>
             </Grid>
           </Paper>

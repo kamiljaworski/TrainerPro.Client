@@ -1,4 +1,4 @@
-import {ITokenDto} from "../../../models/token/ITokenDto";
+import { ITokenDto } from "../../../models/authorization/dto/ITokenDto";
 
 const TOKEN_KEY = 'WARPSOLUTIONS_API_USER_TOKEN';
 

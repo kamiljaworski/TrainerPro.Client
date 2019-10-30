@@ -1,35 +1,23 @@
 import { Dispatch } from 'redux';
-import { AuthorizationState } from '../authorizationState';
 import { RegisterUserActions } from './registerUserTypes';
-import { REGISTER_USER_SUCCESS} from '../authorizationTypes';
-import { toast } from "react-toastify";
+import { REGISTER_USER_SUCCESS } from '../authorizationTypes';
 import * as authorizationService from '../../../services/authorizationService';
+import IRegisterDto from '../../../models/authorization/dto/IRegisterDto';
 
 
-const registerUserSuccess = (newState: AuthorizationState): RegisterUserActions => ({
-    type: REGISTER_USER_SUCCESS,
-    payload: newState
+const registerUserSuccess = (): RegisterUserActions => ({
+    type: REGISTER_USER_SUCCESS
 });
 
 
-export const registerUser = (login: string, password: string) =>
+export const registerUser = (registerDto: IRegisterDto) =>
     async (dispatch: Dispatch<RegisterUserActions>): Promise<boolean> => {
-        
-        const result = await authorizationService.registerUser(login, password);
 
-        if(result.status !== 200) {
-            toast.error("Spadaj!", {
-                position: toast.POSITION.TOP_RIGHT
-            });
-            return false;
+        const response = await authorizationService.registerUser(registerDto);
+        if (response.status === 200) {
+            dispatch(registerUserSuccess());
+            return true;
         }
 
-        const authState = {
-            loggedIn: true,
-            token: "ASD",
-            username: login
-        }
-        
-        dispatch(registerUserSuccess(authState));
-        return true;
+        return false;
     }

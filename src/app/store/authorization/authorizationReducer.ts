@@ -3,9 +3,7 @@ import { AuthorizationState } from './authorizationState'
 import { LoginUserActions } from './loginUser/loginUserTypes';
 
 const initialState: AuthorizationState = {
-    loggedIn: false,
-    token: null,
-    username: null
+    loggedIn: false
 }
 
 type AuthorizationActions = LoginUserActions;
