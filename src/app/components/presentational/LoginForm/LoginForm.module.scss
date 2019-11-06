@@ -7,3 +7,17 @@
 .loginButton {
     width: 150px;
 }
+
+.smoothAppear > div {
+  animation: appear 3s ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 500px;
+  }
+}

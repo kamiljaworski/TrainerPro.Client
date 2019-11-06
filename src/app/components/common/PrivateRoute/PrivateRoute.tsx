@@ -11,7 +11,7 @@ const PrivateRoute: React.SFC<PrivateRouteProps> = ({ children, userRoles, requi
         <React.Fragment>
             {redirectPath && !isAuthenticated && <Redirect to={redirectPath} />}
             {isAuthenticated ?
-                <Route {...rest} > {children} </Route>
+                <Route {...rest}> {children} </Route>
                 : <Unathorized />
             }
         </React.Fragment>

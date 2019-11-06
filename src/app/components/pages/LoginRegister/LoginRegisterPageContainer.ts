@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { ThunkDispatch } from "redux-thunk";
 import { AppState } from "../../../store";
 import { loginUser } from "../../../store/authorization/loginUser/loginUserActions";
-import LoginRegister from "./LoginRegister";
-import { DispatchFromProps, OwnProps, StateFromProps } from "./LoginRegisterProps";
+import LoginRegisterPage from "./LoginRegisterPage";
+import { DispatchFromProps, OwnProps, StateFromProps } from "./LoginRegisterPageProps";
 
 
 const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) : DispatchFrom
 export default connect<StateFromProps, DispatchFromProps, OwnProps, AppState>(
     mapStateToProps,
     mapDispatchToProps
-)(LoginRegister)
+)(LoginRegisterPage)

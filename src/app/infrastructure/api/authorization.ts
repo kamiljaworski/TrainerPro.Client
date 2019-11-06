@@ -7,5 +7,5 @@ export const registerUser = async (registerDto: IRegisterDto) => {
 };
 
 export const loginUser = async (loginForm: ILoginDto) => {
-    return await client.post('api/token', loginForm);
+    return await client.post('api/Login', loginForm);
 };

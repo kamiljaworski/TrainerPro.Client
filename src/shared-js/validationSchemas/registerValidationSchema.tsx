@@ -7,7 +7,7 @@ export const registerValidationSchema = object().required().shape({
     .oneOf([ref('password'), ''], 'Passwords are not the same')
     .min(6)
     .required(),
-    email: string().email(),
+    email: string().email().required(),
     firstName: string().notRequired().min(6),
     lastName: string().notRequired().min(6),
 });

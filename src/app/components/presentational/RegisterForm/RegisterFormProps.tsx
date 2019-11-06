@@ -11,4 +11,5 @@ export interface OwnProps {
     onSuccessSubmitCallback?: any
 }
 
-export type RegisterFormProps = DispatchFromProps & OwnProps & StateFromProps;
+type RegisterFormProps = DispatchFromProps & OwnProps & StateFromProps;
+export default RegisterFormProps;

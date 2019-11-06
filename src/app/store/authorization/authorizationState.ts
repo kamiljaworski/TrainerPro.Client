@@ -1,11 +1,7 @@
-import UserRoles from "../../../shared-js/enums/UserRoles";
+import IUserDto from "../../models/user/dto/IUserDto";
 
 export interface AuthorizationState {
     loggedIn: boolean,
     token?: string,
-    user?: {
-        id?: number,
-        name?: string,
-        roles?: UserRoles[]
-    }
+    user?: IUserDto
 }

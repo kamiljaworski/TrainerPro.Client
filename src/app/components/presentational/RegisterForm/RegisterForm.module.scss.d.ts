@@ -3,6 +3,8 @@ declare const styles: {
   readonly "loginButton": string;
   readonly "selectUserTypeContainer": string;
   readonly "selectUserType": string;
+  readonly "smoothAppear": string;
+  readonly "appear": string;
 };
 export = styles;
 

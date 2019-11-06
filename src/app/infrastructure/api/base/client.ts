@@ -22,13 +22,20 @@ client.interceptors.request.use((config: AxiosRequestConfig) => {
   return config;
 });
 
-client.interceptors.response.use(response => response, error => {
+client.interceptors.response.use(response => {
+  if(response.status.toString()[0] !== "2") {
+    var message = response.data.message ? response.data.message : response.statusText;
+    toast.error(message, {
+        position: toast.POSITION.TOP_RIGHT
+    });
+  }
+  return Promise.resolve(response);
+}, error => {
   // network error
   if (!error.response) { 
     toast.error(error.message, {
       position: toast.POSITION.TOP_RIGHT
     });
-    return {};
   }
   else {
     var message = error.response.data.message ? error.response.data.message : error.message;
@@ -36,4 +43,5 @@ client.interceptors.response.use(response => response, error => {
         position: toast.POSITION.TOP_RIGHT
     });
   }
+  return Promise.resolve(error);
 });

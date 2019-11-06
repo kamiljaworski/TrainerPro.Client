@@ -1,5 +1,6 @@
 enum UserRoles {
-    User = "USER"
+    User = "User",
+    Trainer = "Trainer"
 }
 
 export default UserRoles;

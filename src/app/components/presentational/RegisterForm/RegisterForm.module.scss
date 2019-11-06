@@ -5,7 +5,7 @@
 }
 
 .loginButton {
-    width: 150px;
+  width: 150px;
 }
 
 .selectUserTypeContainer {
@@ -15,4 +15,18 @@
 
 .selectUserType {
   width: 80%;
+}
+
+.smoothAppear > div {
+  animation: appear 3s ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  from {
+    max-height: 0px;
+  }
+  to {
+    max-height: 500px;
+  }
 }

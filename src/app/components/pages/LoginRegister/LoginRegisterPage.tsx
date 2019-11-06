@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import styles from './LoginRegister.module.scss';
-import { LoginRegisterProps } from './LoginRegisterProps';
+import styles from './LoginRegisterPage.module.scss';
+import { LoginRegisterPageProps } from './LoginRegisterPageProps';
 import { Grid, Container, Paper, Tab, Tabs } from '@material-ui/core';
 import LoginForm from '../../presentational/LoginForm/LoginFormContainer';
 import RegisterForm from '../../presentational/RegisterForm/RegisterFormContainer';
 import classnames from 'classnames';
+import { ToastContainer } from "react-toastify";
 
-const Login: React.FC<LoginRegisterProps> = () => {
+const LoginRegisterPage: React.FC<LoginRegisterPageProps> = () => {
   const [tab, setTab] = useState(0);
 
   const handleTabChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-    setTab(newValue); 
+    setTab(newValue);
   };
 
   const onRegisterSubmitSuccess = () => {
@@ -34,21 +35,21 @@ const Login: React.FC<LoginRegisterProps> = () => {
               indicatorColor="secondary"
               textColor="secondary"
               onChange={handleTabChange}
-              aria-label="disabled tabs example"
             >
               <Tab label="Logowanie" />
               <Tab label="Rejestracja " />
             </Tabs>
             <Grid container spacing={2}>
-              <Grid item xs={12} className={styles.loginRegisterContainer}>
-              {tab === 0 ? <LoginForm /> : <RegisterForm onSuccessSubmitCallback={onRegisterSubmitSuccess}/>}
+              <Grid item xs={12}>
+                {tab === 0 ? <LoginForm /> : <RegisterForm onSuccessSubmitCallback={onRegisterSubmitSuccess} />}
               </Grid>
             </Grid>
           </Paper>
         </Grid>
       </Grid>
+      <ToastContainer autoClose={2000} />
     </Container>
   );
 }
 
-export default Login;
+export default LoginRegisterPage;
