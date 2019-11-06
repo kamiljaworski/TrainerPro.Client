@@ -5,15 +5,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const persistConfig = {
-    key: 'root',
-    storage,
-  }
-  
+
 const rootReducer = combineReducers({
-    authorization: authorizationReducer,
+    authorization:  persistReducer({key: '1', storage: storage}, authorizationReducer),
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+export const persistor = persistStore(store);
 
 export type AppState = ReturnType<typeof rootReducer>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store, persistor } from './app/store';
+import { PersistGate } from "redux-persist/integration/react";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -23,18 +24,20 @@ const theme = createMuiTheme({
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Switch>
-            <PrivateRoute exact path={RouterPaths.TrainerProfile} requiredRole={UserRoles.Trainer}
-              redirectPath={RouterPaths.Home}>
-              <TrainerProfile />
-            </PrivateRoute>
-            <Route exact path={RouterPaths.Home}><Home /></Route>
-            <Route exact path={RouterPaths.LoginRegister}><LoginRegisterPage /></Route>
-          </Switch>
-        </BrowserRouter>
-      </ThemeProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Switch>
+              <PrivateRoute exact path={RouterPaths.TrainerProfile} requiredRole={UserRoles.Trainer}
+                redirectPath={RouterPaths.Home}>
+                <TrainerProfile />
+              </PrivateRoute>
+              <Route exact path={RouterPaths.Home}><Home /></Route>
+              <Route exact path={RouterPaths.LoginRegister}><LoginRegisterPage /></Route>
+            </Switch>
+          </BrowserRouter>
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   );
 }
