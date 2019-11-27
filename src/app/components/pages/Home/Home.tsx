@@ -1,50 +1,20 @@
-import { Breadcrumbs, Link, Paper, IconButton } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Accessibility from '@material-ui/icons/Accessibility';
-import AccountBox from '@material-ui/icons/AccountBox';
 import React from 'react';
-import { useHistory, Link as RouterLink } from 'react-router-dom';
-import RouterPaths from '../../../../shared-js/enums/RouterPaths';
+import NavigationBar from '../../layout/NavigationBar/NavigationBar';
+import HomeProps from './HomeProps';
+import UserProfile from '../../presentational/UserProfile.tsx/UserProfile';
+import { Container, Paper } from '@material-ui/core';
+import styles from './Home.module.scss';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        padding: theme.spacing(1, 2),
-    },
-    link: {
-        display: 'flex',
-    },
-    icon: {
-        marginRight: theme.spacing(0.5),
-        width: 20,
-        height: 20,
-    },
-}));
-
-const Home: React.FC = () => {
-    const classes = useStyles();
-    const history = useHistory();
-    function handleClick() {
-        history.push(RouterPaths.LoginRegister);
-    }
-
+const Home: React.FC<HomeProps> = ({ user }) => {
     return (
-        <Paper elevation={0} className={classes.root}>
-            <Breadcrumbs aria-label="breadcrumb">
-                <IconButton
-                    color="secondary"
-                    onClick={() =>  history.push(RouterPaths.LoginRegister)} className={classes.link}>
-                    <AccountBox className={classes.icon} />
-                    Sign in/Register
-                </IconButton>
-                
-                <IconButton
-                    color="secondary"
-                    onClick={() =>  history.push(RouterPaths.TrainerProfile)} className={classes.link}>
-                    <Accessibility className={classes.icon} />
-                    Trainer Profile
-                </IconButton>
-            </Breadcrumbs>
-        </Paper>
+        <div style={{height: '80%'}}>
+            <NavigationBar />
+            <Container maxWidth="md" className={styles.container}>
+                <Paper className={styles.smartCenter}>
+                    <UserProfile user={user} />
+                </Paper>
+            </Container>
+        </div>
     );
 }
 

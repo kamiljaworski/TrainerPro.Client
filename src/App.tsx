@@ -6,11 +6,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './app/components/common/PrivateRoute/PrivateRouteContainer';
-import UserRoles from './shared-js/enums/UserRoles';
-import Home from './app/components/pages/Home/Home';
+import HomePage from './app/components/pages/Home/HomeContainer';
 import RouterPaths from './shared-js/enums/RouterPaths';
-import TrainerProfile from './app/components/pages/TrainerProfile/TrainerProfilePage';
 import LoginRegisterPage from './app/components/pages/LoginRegister/LoginRegisterPageContainer';
+import Trainers from './app/components/presentational/Trainers/Trainers';
 import 'typeface-roboto';
 import "react-toastify/dist/ReactToastify.css";
 import 'animate.css';
@@ -28,11 +27,12 @@ const App: React.FC = () => {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Switch>
-              <PrivateRoute exact path={RouterPaths.TrainerProfile} requiredRole={UserRoles.Trainer}
-                redirectPath={RouterPaths.Home}>
-                <TrainerProfile />
+              <PrivateRoute exact path={RouterPaths.Trainers} redirectPath={RouterPaths.LoginRegister}>
+                <Trainers />
               </PrivateRoute>
-              <Route exact path={RouterPaths.Home}><Home /></Route>
+              <PrivateRoute exact path={RouterPaths.Home} redirectPath={RouterPaths.LoginRegister}>
+                <HomePage />
+              </PrivateRoute>
               <Route exact path={RouterPaths.LoginRegister}><LoginRegisterPage /></Route>
             </Switch>
           </BrowserRouter>

@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import styles from './LoginForm.module.scss';
-import LoginFormProps from './LoginFormProps';
+import { Button, Grid, TextField } from '@material-ui/core';
 import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
+import { CSSTransition } from 'react-transition-group';
+import RouterPaths from '../../../../shared-js/enums/RouterPaths';
+import UserRoles from '../../../../shared-js/enums/UserRoles';
 import { loginValidationSchema } from '../../../../shared-js/validationSchemas/loginValidationSchema';
-import TextField from '@material-ui/core/TextField';
-import { Button, Grid } from '@material-ui/core';
 import ILoginDto from '../../../models/authorization/dto/ILoginDto';
 import Loader from '../../common/Loader/Loader';
-import { CSSTransition } from 'react-transition-group';
-import { useHistory } from 'react-router';
 import '../RegisterForm/LoginRegister.css';
-import UserRoles from '../../../../shared-js/enums/UserRoles';
-import RouterPaths from '../../../../shared-js/enums/RouterPaths';
+import styles from './LoginForm.module.scss';
+import LoginFormProps from './LoginFormProps';
 
 const LoginForm: React.FC<LoginFormProps> = ({ loginUser, userRoles }) => {
     const [isLoading, setIsloading] = useState(false);
@@ -35,7 +34,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ loginUser, userRoles }) => {
         if (isSuccess) {
             if (userRoles) {
                 if (userRoles.findIndex(x => x === UserRoles.Trainer)) {
-                    history.push(RouterPaths.TrainerProfile);
+                    history.push(RouterPaths.UserProfile);
                     return;
                 }
                 if (userRoles.findIndex(x => x === UserRoles.User)) {

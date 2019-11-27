@@ -1,13 +1,14 @@
 import { RouteProps } from 'react-router';
 import UserRoles from '../../../../shared-js/enums/UserRoles';
+import { AuthorizationState } from '../../../store/authorization/authorizationState';
 
 export interface OwnProps extends RouteProps {
-    requiredRole: UserRoles;
+    requiredRole?: UserRoles;
     redirectPath?: string;
 }
 
 export interface StateFromProps {
-    userRoles?: UserRoles[];
+    authorization: AuthorizationState;
 }
 
 type PrivateRouteProps = OwnProps & StateFromProps;

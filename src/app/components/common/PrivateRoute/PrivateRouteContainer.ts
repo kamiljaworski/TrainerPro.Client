@@ -1,14 +1,14 @@
 
 import { connect } from 'react-redux';
 import { AppState } from '../../../store';
-import { OwnProps, StateFromProps } from './PrivateRouteProps';
+import { StateFromProps } from './PrivateRouteProps';
 import PrivateRoute from './PrivateRoute';
 
 const mapStateToProps = (state: AppState) => ({
-    userRoles: state.authorization.user ? state.authorization.user.roles : undefined,
+    authorization: state.authorization,
 })
 
-export default connect<StateFromProps, any, OwnProps, AppState>(
+export default connect<StateFromProps, any, any, AppState>(
     mapStateToProps,
     null
 )(PrivateRoute);

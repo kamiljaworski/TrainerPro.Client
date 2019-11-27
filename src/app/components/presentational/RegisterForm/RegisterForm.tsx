@@ -1,15 +1,14 @@
-import { Button, FormControl, Grid, InputLabel, MenuItem, Select } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import AccountType from '../../../../shared-js/enums/AccountType';
 import { registerValidationSchema } from '../../../../shared-js/validationSchemas/registerValidationSchema';
 import IRegisterDto from '../../../models/authorization/dto/IRegisterDto';
 import Loader from '../../common/Loader/Loader';
+import './LoginRegister.css';
 import styles from './RegisterForm.module.scss';
 import RegisterFormProps from './RegisterFormProps';
-import { CSSTransition } from 'react-transition-group';
-import { useFormik } from 'formik';
-import './LoginRegister.css';
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ registerUser, onSuccessSubmitCallback }) => {
     const [isLoading, setIsLoading] = useState(false);

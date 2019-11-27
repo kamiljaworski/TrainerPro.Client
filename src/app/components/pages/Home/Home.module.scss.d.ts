@@ -3,6 +3,8 @@ declare const styles: {
   readonly "appLogo": string;
   readonly "appHeader": string;
   readonly "appLink": string;
+  readonly "container": string;
+  readonly "smartCenter": string;
 };
 export = styles;
 

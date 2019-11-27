@@ -22,8 +22,12 @@ export const loginUser = (loginDto: ILoginDto) =>
                 loggedIn: true,
                 token: response.data.token,
                 user: {
-                    name: decoded.email,
+                    name: decoded.username,
                     roles: [decoded.account_type],
+                    lastName: decoded.lastName,
+                    firstName: decoded.firstName,
+                    username: decoded.username,
+                    email: decoded.email,
                     id: decoded.sub
                 }
             }

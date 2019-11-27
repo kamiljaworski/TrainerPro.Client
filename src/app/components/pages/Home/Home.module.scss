@@ -20,3 +20,17 @@
 .appLink {
   color: #09d3ac;
 }
+
+.container {
+  position:relative;
+  min-height: 100%;
+}
+
+.smartCenter {
+  position:absolute;
+  background: #EEE;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  width: 60%;
+} 
