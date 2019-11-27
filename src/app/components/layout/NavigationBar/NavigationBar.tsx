@@ -29,11 +29,10 @@ const NavigationBar: React.FC = () => {
             <Breadcrumbs aria-label="breadcrumb">
                 <IconButton
                     color="secondary"
-                    onClick={() =>  history.push(RouterPaths.LoginRegister)} className={classes.link}>
+                    onClick={() =>  history.push(RouterPaths.UserProfile)} className={classes.link}>
                     <AccountBox className={classes.icon} />
-                    Sign in/Register
+                    Profile
                 </IconButton>
-                
                 <IconButton
                     color="secondary"
                     onClick={() =>  history.push(RouterPaths.Trainers)} className={classes.link}>

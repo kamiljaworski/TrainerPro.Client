@@ -1,8 +1,8 @@
 enum RouterPaths {
-    Home = '/',
+    Home = '/Home',
     LoginRegister = '/Login',
-    UserProfile = '/UserProfile',
-    Trainers = '/Trainers',
+    UserProfile = '/Home/UserProfile',
+    Trainers = '/Home/Trainers',
 }
 
 export default RouterPaths;

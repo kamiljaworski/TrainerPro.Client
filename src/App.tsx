@@ -27,10 +27,7 @@ const App: React.FC = () => {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Switch>
-              <PrivateRoute exact path={RouterPaths.Trainers} redirectPath={RouterPaths.LoginRegister}>
-                <Trainers />
-              </PrivateRoute>
-              <PrivateRoute exact path={RouterPaths.Home} redirectPath={RouterPaths.LoginRegister}>
+              <PrivateRoute path={RouterPaths.Home} redirectPath={RouterPaths.LoginRegister}>
                 <HomePage />
               </PrivateRoute>
               <Route exact path={RouterPaths.LoginRegister}><LoginRegisterPage /></Route>

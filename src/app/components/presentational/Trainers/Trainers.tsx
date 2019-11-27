@@ -35,6 +35,10 @@ const Trainers: React.FC = () => {
             <Container maxWidth="md" className={styles.container}>
                 <Paper className={styles.smartCenter}>
                     <List component="nav" aria-label="main mailbox folders">
+                        {!trainers || trainers.length === 0 &&
+                            <ListItem>
+                                <ListItemText primary="No trainers found" />
+                            </ListItem>}
                         {trainers && trainers.map(x =>
                             <React.Fragment key={x.id}>
                                 <ListItem button >

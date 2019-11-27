@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 import RouterPaths from '../../../../shared-js/enums/RouterPaths';
-import UserRoles from '../../../../shared-js/enums/UserRoles';
 import { loginValidationSchema } from '../../../../shared-js/validationSchemas/loginValidationSchema';
 import ILoginDto from '../../../models/authorization/dto/ILoginDto';
 import Loader from '../../common/Loader/Loader';
@@ -32,17 +31,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ loginUser, userRoles }) => {
         const isSuccess = await loginUser(values);
         setIsloading(false);
         if (isSuccess) {
-            if (userRoles) {
-                if (userRoles.findIndex(x => x === UserRoles.Trainer)) {
-                    history.push(RouterPaths.UserProfile);
-                    return;
-                }
-                if (userRoles.findIndex(x => x === UserRoles.User)) {
-                    history.push(RouterPaths.UserProfile);
-                    return;
-                }
-            }
-            history.push(RouterPaths.Home);
+            history.push(RouterPaths.UserProfile);
         }
     }
 

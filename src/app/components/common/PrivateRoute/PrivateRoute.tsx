@@ -6,15 +6,14 @@ import { isUserInRole } from '../../../helpers/UserHelper';
 
 const PrivateRoute: React.SFC<PrivateRouteProps> = ({ children, authorization, requiredRole, redirectPath, ...rest }) => {
     const isAuthenticated = requiredRole ? isUserInRole(authorization.user.roles, requiredRole) : authorization.loggedIn;
-console.log('requiredRole', requiredRole);
+
+    var redirect = redirectPath && !isAuthenticated ? <Redirect to={redirectPath} /> : null;
+    var route = isAuthenticated
+        ? <Route {...rest}> {children} </Route>
+        : <Unathorized />;
+
     return (
-        <React.Fragment>
-            {redirectPath && !isAuthenticated && <Redirect to={redirectPath} />}
-            {isAuthenticated ?
-                <Route {...rest}> {children} </Route>
-                : <Unathorized />
-            }
-        </React.Fragment>
+        redirect ? redirect : route
     );
 }
 
