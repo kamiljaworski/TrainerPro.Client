@@ -4,7 +4,6 @@ import { LoginRegisterPageProps } from './LoginRegisterPageProps';
 import { Grid, Container, Paper, Tab, Tabs } from '@material-ui/core';
 import LoginForm from '../../presentational/LoginForm/LoginFormContainer';
 import RegisterForm from '../../presentational/RegisterForm/RegisterFormContainer';
-import classnames from 'classnames';
 import { ToastContainer } from "react-toastify";
 
 const LoginRegisterPage: React.FC<LoginRegisterPageProps> = () => {
@@ -19,7 +18,7 @@ const LoginRegisterPage: React.FC<LoginRegisterPageProps> = () => {
   }
   
   return (
-    <Container className={classnames(styles.app, styles.mainContainer)} maxWidth="xl">
+    <Container className={styles.app} maxWidth="xl">
       <Grid
         container
         spacing={0}

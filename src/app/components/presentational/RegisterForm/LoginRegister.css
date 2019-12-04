@@ -7,5 +7,5 @@
 .my-node-appear-done {
   opacity: 1;
   transform: scaleY(1);
-  transition: opacity 1.2s, transform .25s ease-in;
+  transition: opacity 0.4s, transform .25s ease-in;
 }

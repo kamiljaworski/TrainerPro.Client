@@ -1,4 +1,4 @@
-import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Fade } from '@material-ui/core';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
@@ -44,7 +44,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ registerUser, onSuccessSubm
     return (
         <React.Fragment>
             <Loader isLoading={isLoading} />
-            <CSSTransition timeout={200} appear={true} in={true} classNames="my-node">
+           <Fade in={true}>
                 <Grid item xs={12}>
                     <form onSubmit={formik.handleSubmit}>
                         <Grid container spacing={2} alignItems="center" alignContent="center" className={styles.smoothAppear}>
@@ -153,7 +153,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ registerUser, onSuccessSubm
                         </Grid>
                     </form>
                 </Grid>
-            </CSSTransition >
+            </Fade >
         </React.Fragment >
     );
 }

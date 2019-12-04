@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from '@material-ui/core';
+import { Button, Grid, TextField, Fade } from '@material-ui/core';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
@@ -38,7 +38,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ loginUser, userRoles }) => {
     return (
         <React.Fragment>
             <Loader isLoading={isLoading} />
-            <CSSTransition timeout={0} appear={true} in={true} classNames="my-node">
+            <Fade in={true}>
                 <Grid item xs={12}>
                     <form onSubmit={formik.handleSubmit}>
                         <Grid container spacing={2} alignItems="center" alignContent="center" className={styles.smoothAppear}>
@@ -77,7 +77,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ loginUser, userRoles }) => {
                         </Grid>
                     </form>
                 </Grid>
-            </CSSTransition>
+            </Fade>
         </React.Fragment>
     );
 }

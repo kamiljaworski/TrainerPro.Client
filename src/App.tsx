@@ -9,7 +9,6 @@ import PrivateRoute from './app/components/common/PrivateRoute/PrivateRouteConta
 import HomePage from './app/components/pages/Home/HomeContainer';
 import RouterPaths from './shared-js/enums/RouterPaths';
 import LoginRegisterPage from './app/components/pages/LoginRegister/LoginRegisterPageContainer';
-import Trainers from './app/components/presentational/Trainers/Trainers';
 import 'typeface-roboto';
 import "react-toastify/dist/ReactToastify.css";
 import 'animate.css';
@@ -28,6 +27,9 @@ const App: React.FC = () => {
           <BrowserRouter>
             <Switch>
               <PrivateRoute path={RouterPaths.Home} redirectPath={RouterPaths.LoginRegister}>
+                <HomePage />
+              </PrivateRoute>
+              <PrivateRoute exact path={RouterPaths.Base} redirectPath={RouterPaths.LoginRegister}>
                 <HomePage />
               </PrivateRoute>
               <Route exact path={RouterPaths.LoginRegister}><LoginRegisterPage /></Route>

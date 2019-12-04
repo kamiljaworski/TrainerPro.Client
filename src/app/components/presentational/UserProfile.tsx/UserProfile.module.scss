@@ -1,0 +1,37 @@
+.loginButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loginButton {
+    width: 150px;
+  }
+  
+  .selectUserTypeContainer {
+    @extend .loginButtonContainer;
+    margin-bottom: 20px;
+  }
+  
+  .selectUserType {
+    width: 80%;
+  }
+  
+  .smoothAppear {
+    padding: 15px;
+    background-color: #424242;
+  }
+
+  .smoothAppear > div {
+    animation: appear 0.2s ease-out;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes appear {
+    from {
+      max-height: 0px;
+    }
+    to {
+      max-height: 500px;
+    }
+  }
