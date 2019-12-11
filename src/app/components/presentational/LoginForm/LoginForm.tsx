@@ -2,7 +2,6 @@ import { Button, Grid, TextField, Fade } from '@material-ui/core';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import { CSSTransition } from 'react-transition-group';
 import RouterPaths from '../../../../shared-js/enums/RouterPaths';
 import { loginValidationSchema } from '../../../../shared-js/validationSchemas/loginValidationSchema';
 import ILoginDto from '../../../models/authorization/dto/ILoginDto';

@@ -8,12 +8,13 @@ import { Route, Switch } from 'react-router';
 import RouterPaths from '../../../../shared-js/enums/RouterPaths';
 import Trainers from '../../presentational/Trainers/Trainers';
 import Products from '../../presentational/Products/Products';
+import UserTrainings from '../../presentational/UserTrainings/UserTrainings';
 
 const Home: React.FC<HomeProps> = ({ user }) => {
     return (
         <div style={{ height: '80%' }}>
             <NavigationBar />
-            <Container maxWidth="md" className={styles.container}>
+            <Container maxWidth="lg" className={styles.container}>
                 <Switch>
                     <Route exact path={RouterPaths.Home}>
                         <UserProfile user={user} />
@@ -26,6 +27,9 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                     </Route>
                     <Route exact path={RouterPaths.UserProducts}>
                         <Products />
+                    </Route>
+                    <Route exact path={RouterPaths.UserTrainings}>
+                       <UserTrainings user={user}/>
                     </Route>
                 </Switch>
             </Container>

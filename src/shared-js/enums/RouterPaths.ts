@@ -5,6 +5,7 @@ enum RouterPaths {
     UserProfile = '/Home/UserProfile',
     Trainers = '/Home/Trainers',
     UserProducts = '/Home/UserProducts',
+    UserTrainings = '/Home/UserTrainings',
 }
 
 export default RouterPaths;

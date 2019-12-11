@@ -1,7 +1,6 @@
 import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Fade } from '@material-ui/core';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import AccountType from '../../../../shared-js/enums/AccountType';
 import { registerValidationSchema } from '../../../../shared-js/validationSchemas/registerValidationSchema';
 import IRegisterDto from '../../../models/authorization/dto/IRegisterDto';

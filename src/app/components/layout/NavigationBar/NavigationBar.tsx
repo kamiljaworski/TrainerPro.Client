@@ -1,6 +1,6 @@
 import { Breadcrumbs, Paper, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Accessibility, AccountBox, Assignment } from '@material-ui/icons';
+import { Accessibility, AccountBox, Assignment, CalendarToday } from '@material-ui/icons';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import RouterPaths from '../../../../shared-js/enums/RouterPaths';
@@ -44,6 +44,12 @@ const NavigationBar: React.FC = () => {
                     onClick={() => history.push(RouterPaths.UserProducts)} className={classes.link}>
                     <Assignment className={classes.icon} />
                     My products
+                </IconButton>
+                <IconButton
+                    color="secondary"
+                    onClick={() => history.push(RouterPaths.UserTrainings)} className={classes.link}>
+                    <CalendarToday className={classes.icon} />
+                    My trainings
                 </IconButton>
             </Breadcrumbs>
         </Paper>

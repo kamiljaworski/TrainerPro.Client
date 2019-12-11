@@ -53,12 +53,12 @@ const Products: React.FC = () => {
     };
 
     async function handleRowUpdate(product: any) {
-        const newProduct : IProductDto = {
-            id: parseInt(product.id) as number,
-            carbsPer100g: parseInt(product.carbsPer100g) as number,
-            kcalPer100g: parseInt(product.kcalPer100g) as number,
-            fatPer100g: parseInt(product.fatPer100g) as number,
-            proteinPer100g: parseInt(product.proteinPer100g) as number,
+        const newProduct: IProductDto = {
+            id: parseInt(product.id),
+            carbsPer100g: parseInt(product.carbsPer100g),
+            kcalPer100g: parseInt(product.kcalPer100g),
+            fatPer100g: parseInt(product.fatPer100g),
+            proteinPer100g: parseInt(product.proteinPer100g),
             name: product.name
         }
         await client.put(productApiUrl, newProduct);
@@ -66,12 +66,12 @@ const Products: React.FC = () => {
     }
 
     async function handleRowAdd(product: any) {
-        const newProduct : IProductDto = {
-            id: parseInt(product.id) as number,
-            carbsPer100g: parseInt(product.carbsPer100g) as number,
-            kcalPer100g: parseInt(product.kcalPer100g) as number,
-            fatPer100g: parseInt(product.fatPer100g) as number,
-            proteinPer100g: parseInt(product.proteinPer100g) as number,
+        const newProduct: IProductDto = {
+            id: parseInt(product.id),
+            carbsPer100g: parseInt(product.carbsPer100g),
+            kcalPer100g: parseInt(product.kcalPer100g),
+            fatPer100g: parseInt(product.fatPer100g),
+            proteinPer100g: parseInt(product.proteinPer100g),
             name: product.name
         }
         await client.post(productApiUrl, newProduct);

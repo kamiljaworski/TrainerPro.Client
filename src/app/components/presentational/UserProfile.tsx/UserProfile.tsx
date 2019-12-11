@@ -1,7 +1,6 @@
 import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Fade } from '@material-ui/core';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import Loader from '../../common/Loader/Loader';
 import styles from './UserProfile.module.scss';
 import UserProfileProps from './UserProfileProps';
@@ -19,7 +18,8 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     });
 
     async function handleSubmit(values: IUserDto) {
-
+        setIsLoading(true);
+        setIsLoading(false);
     }
 
     return (

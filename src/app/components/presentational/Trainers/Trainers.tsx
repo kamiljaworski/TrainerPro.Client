@@ -8,8 +8,8 @@ import Divider from '@material-ui/core/Divider';
 import { Person } from '@material-ui/icons';
 import { Container, Paper, Checkbox, ListItemSecondaryAction, Button, Grid, Fade } from '@material-ui/core';
 import styles from './Trainers.module.scss';
-import Axios from 'axios';
 import IGetTrainersDto from '../../../models/trainer/IUserDto';
+import { client } from '../../../infrastructure/api/base/client';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -37,7 +37,7 @@ const Trainers: React.FC = () => {
 
     useEffect(() => {
         async function getTrainers() {
-            var _trainers = await Axios.get<IGetTrainersDto[]>("http://localhost:56093/api/trainer");
+            var _trainers = await client.get<IGetTrainersDto[]>("api/trainer");
             settrainers(_trainers.data);
         }
         getTrainers();
@@ -49,7 +49,7 @@ const Trainers: React.FC = () => {
                 <Container maxWidth="md" className={styles.container}>
                     <Paper className={styles.smartCenter}>
                         <List component="nav" aria-label="main mailbox folders">
-                            {!trainers || trainers.length === 0 &&
+                            {(!trainers || trainers.length === 0) &&
                                 <ListItem>
                                     <ListItemText primary="No trainers found" />
                                 </ListItem>}

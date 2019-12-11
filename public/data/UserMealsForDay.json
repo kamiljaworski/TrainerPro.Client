@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Kurczak z ryżem",
+        "products": [
+            {
+                "name": "ryż",
+                "weight": 50
+            },
+            {
+                "name": "kurczak",
+                "weight": 150
+            }
+        ],
+        "kcal": 700
+    }
+]
