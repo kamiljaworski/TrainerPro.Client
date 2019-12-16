@@ -12,5 +12,19 @@
             }
         ],
         "kcal": 700
+    },
+    {
+        "name": "Hamburger",
+        "products": [
+            {
+                "name": "Mięso wołowe",
+                "weight": 200
+            },
+            {
+                "name": "Bułka",
+                "weight": 150
+            }
+        ],
+        "kcal": 500
     }
 ]

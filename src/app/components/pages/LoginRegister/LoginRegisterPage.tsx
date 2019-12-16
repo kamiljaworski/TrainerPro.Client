@@ -4,7 +4,6 @@ import { LoginRegisterPageProps } from './LoginRegisterPageProps';
 import { Grid, Container, Paper, Tab, Tabs } from '@material-ui/core';
 import LoginForm from '../../presentational/LoginForm/LoginFormContainer';
 import RegisterForm from '../../presentational/RegisterForm/RegisterFormContainer';
-import { ToastContainer } from "react-toastify";
 
 const LoginRegisterPage: React.FC<LoginRegisterPageProps> = () => {
   const [tab, setTab] = useState(0);
@@ -16,7 +15,7 @@ const LoginRegisterPage: React.FC<LoginRegisterPageProps> = () => {
   const onRegisterSubmitSuccess = () => {
     setTab(0);
   }
-  console.log('tab', tab);
+
   return (
     <Container className={styles.app} maxWidth="xl">
       <Grid
@@ -46,7 +45,6 @@ const LoginRegisterPage: React.FC<LoginRegisterPageProps> = () => {
           </Paper>
         </Grid>
       </Grid>
-      <ToastContainer autoClose={2000} />
     </Container>
   );
 }

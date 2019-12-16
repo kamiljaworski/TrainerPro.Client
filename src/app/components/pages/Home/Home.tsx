@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import NavigationBar from '../../layout/NavigationBar/NavigationBar';
+import NavigationBar from '../../layout/NavigationBar/NavigationBarContainer';
 import HomeProps from './HomeProps';
 import UserProfile from '../../presentational/UserProfile.tsx/UserProfile';
 import { Container } from '@material-ui/core';

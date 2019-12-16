@@ -11,6 +11,7 @@ import RouterPaths from './shared-js/enums/RouterPaths';
 import LoginRegisterPage from './app/components/pages/LoginRegister/LoginRegisterPageContainer';
 import 'typeface-roboto';
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
 
 const theme = createMuiTheme({
   palette: {
@@ -36,6 +37,7 @@ const App: React.FC = () => {
               </Route>
             </Switch>
           </BrowserRouter>
+          <ToastContainer autoClose={2000} />
         </ThemeProvider>
       </PersistGate>
     </Provider>

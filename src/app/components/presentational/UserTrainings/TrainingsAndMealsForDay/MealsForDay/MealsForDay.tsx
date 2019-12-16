@@ -5,7 +5,7 @@ import {
     TableCell,
     TableHead,
     TableRow,
-    Paper
+    Paper, Button, Menu, MenuItem
 } from '@material-ui/core';
 import MealsForDayProps from './MealsForDayProps';
 
@@ -22,7 +22,17 @@ const useStyles = makeStyles({
 
 const MealsForDay: React.FC<MealsForDayProps> = ({ meals }) => {
     const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    
     return (
         <Paper className={classes.root}>
             <Table className={classes.table} aria-label="simple table">
@@ -35,10 +45,38 @@ const MealsForDay: React.FC<MealsForDayProps> = ({ meals }) => {
                 </TableHead>
                 <TableBody>
                     {meals.map(meal => (
-                        <TableRow key={meal.name}>
-                            <TableCell component="th" scope="row"> {meal.name}</TableCell>
-                            <TableCell align="right">{meal.kcal}</TableCell>
-                        </TableRow>
+                        <React.Fragment key={meal.name}>
+                            <TableRow >
+                                <TableCell component="th" scope="row"> {meal.name}</TableCell>
+                                <TableCell align="right">{meal.kcal}</TableCell>
+                                <TableCell align="right">
+                                    <div>
+                                        <Button
+                                            aria-controls="simple-menu"
+                                            aria-haspopup="true"
+                                            color="secondary"
+                                            variant="outlined"
+                                            onClick={handleClick}
+                                        >
+                                            Show
+                                        </Button>
+                                        <Menu
+                                            id="simple-menu"
+                                            anchorEl={anchorEl}
+                                            keepMounted
+                                            open={Boolean(anchorEl)}
+                                            onClose={handleClose}
+                                        >
+                                            {meal.products && meal.products.map(product =>
+                                                <MenuItem key={product.name} onClick={handleClose}>
+                                                    {product.name} {product.weight}g
+                                                </MenuItem>
+                                            )}
+                                        </Menu>
+                                    </div>
+                                </TableCell>
+                            </TableRow>
+                        </React.Fragment>
                     ))}
                 </TableBody>
             </Table>

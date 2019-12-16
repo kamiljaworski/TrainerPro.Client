@@ -47,11 +47,12 @@ const TrainingsAndMealsForDay: React.FC<TrainingsAndMealsForDayProps> = ({ day, 
         <Fade in={true} timeout={500}>
             <Paper square style={{ width: '100%' }}>
                 <div className={classes.root}>
-                    <ExpansionPanel expanded={isExpandedTrainings} onClick={() => setIsExpandedTrainings(!isExpandedTrainings)}>
+                    <ExpansionPanel expanded={isExpandedTrainings} >
                         <ExpansionPanelSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel2a-content"
                             id="panel2a-header"
+                            onClick={() => setIsExpandedTrainings(!isExpandedTrainings)}
                         >
                             <Typography className={classes.heading}>Trainings</Typography>
                         </ExpansionPanelSummary>
@@ -59,11 +60,12 @@ const TrainingsAndMealsForDay: React.FC<TrainingsAndMealsForDayProps> = ({ day, 
                             <TrainingsForDay trainings={trainings} />
                         </ExpansionPanelDetails>
                     </ExpansionPanel>
-                    <ExpansionPanel expanded={isExpandedMeals}  onClick={() => setIsExpandedMeals(!isExpandedMeals)}>
+                    <ExpansionPanel expanded={isExpandedMeals}>
                         <ExpansionPanelSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel3a-content"
                             id="panel3a-header"
+                            onClick={() => setIsExpandedMeals(!isExpandedMeals)}
                         >
                             <Typography className={classes.heading}>Meals</Typography>
                         </ExpansionPanelSummary>
