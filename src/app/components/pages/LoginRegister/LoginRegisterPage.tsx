@@ -16,7 +16,7 @@ const LoginRegisterPage: React.FC<LoginRegisterPageProps> = () => {
   const onRegisterSubmitSuccess = () => {
     setTab(0);
   }
-  
+  console.log('tab', tab);
   return (
     <Container className={styles.app} maxWidth="xl">
       <Grid

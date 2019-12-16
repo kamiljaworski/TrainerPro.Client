@@ -1,5 +1,5 @@
 enum RouterPaths {
-    Base = '',
+    Base = '/',
     Home = '/Home',
     LoginRegister = '/Login',
     UserProfile = '/Home/UserProfile',

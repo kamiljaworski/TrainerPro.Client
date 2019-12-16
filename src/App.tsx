@@ -11,7 +11,6 @@ import RouterPaths from './shared-js/enums/RouterPaths';
 import LoginRegisterPage from './app/components/pages/LoginRegister/LoginRegisterPageContainer';
 import 'typeface-roboto';
 import "react-toastify/dist/ReactToastify.css";
-import 'animate.css';
 
 const theme = createMuiTheme({
   palette: {
@@ -32,7 +31,9 @@ const App: React.FC = () => {
               <PrivateRoute exact path={RouterPaths.Base} redirectPath={RouterPaths.LoginRegister}>
                 <HomePage />
               </PrivateRoute>
-              <Route exact path={RouterPaths.LoginRegister}><LoginRegisterPage /></Route>
+              <Route exact path={RouterPaths.LoginRegister}>
+                <LoginRegisterPage />
+              </Route>
             </Switch>
           </BrowserRouter>
         </ThemeProvider>

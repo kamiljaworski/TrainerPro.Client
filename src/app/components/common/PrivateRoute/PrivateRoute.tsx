@@ -10,7 +10,7 @@ const PrivateRoute: React.SFC<PrivateRouteProps> = ({ children, authorization, r
     var redirect = redirectPath && !isAuthenticated ? <Redirect to={redirectPath} /> : null;
     var route = isAuthenticated
         ? <Route {...rest}> {children} </Route>
-        : <Unathorized />;
+        : <Unathorized />
 
     return (
         redirect ? redirect : route

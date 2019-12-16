@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavigationBar from '../../layout/NavigationBar/NavigationBar';
 import HomeProps from './HomeProps';
 import UserProfile from '../../presentational/UserProfile.tsx/UserProfile';
 import { Container } from '@material-ui/core';
 import styles from './Home.module.scss';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, useHistory, useLocation } from 'react-router';
 import RouterPaths from '../../../../shared-js/enums/RouterPaths';
 import Trainers from '../../presentational/Trainers/Trainers';
 import Products from '../../presentational/Products/Products';
 import UserTrainings from '../../presentational/UserTrainings/UserTrainings';
 
 const Home: React.FC<HomeProps> = ({ user }) => {
+    const history = useHistory();
+    const location = useLocation()
+
+    useEffect(() => {
+        if (location.pathname === RouterPaths.Base) {
+            history.push(RouterPaths.Home);
+        }
+    }, [history, location.pathname]);
+
     return (
         <div style={{ height: '80%' }}>
             <NavigationBar />
@@ -29,7 +38,7 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                         <Products />
                     </Route>
                     <Route exact path={RouterPaths.UserTrainings}>
-                       <UserTrainings user={user}/>
+                        <UserTrainings user={user} />
                     </Route>
                 </Switch>
             </Container>
