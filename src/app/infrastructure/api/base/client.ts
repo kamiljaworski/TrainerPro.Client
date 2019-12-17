@@ -9,7 +9,8 @@ export const client = axios.create({
 
 client.interceptors.request.use((config: AxiosRequestConfig) => {
   let tokenResponse = getUserToken();
-  config.headers.Authorization = tokenResponse ? `Bearer ${tokenResponse.access_token}` : undefined;
+
+  config.headers.Authorization = `Bearer ${tokenResponse}`;
 
   config.paramsSerializer = params => {
     return qs.stringify(params, {

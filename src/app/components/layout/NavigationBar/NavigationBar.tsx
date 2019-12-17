@@ -36,7 +36,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ user }) => {
     const classes = useStyles();
     const history = useHistory();
 
-    const isTrainer = isUserInRole(user && user.roles, UserRoles.Trainer);
+    const isTrainer = isUserInRole(user, UserRoles.Trainer);
 
     function signOutUser() {
         toast.success("You have been logged out");

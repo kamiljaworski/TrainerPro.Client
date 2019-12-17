@@ -5,6 +5,7 @@ import { LOGIN_USER_SUCCESS } from '../authorizationTypes';
 import * as authorizationService from '../../../services/authorizationService';
 import ILoginDto from '../../../models/authorization/dto/ILoginDto';
 import jwt_decode  from 'jwt-decode';
+import { setUserToken } from '../../../infrastructure/api/base/tokenManagement';
 
 const loginUserSuccess = (newState: AuthorizationState): LoginUserActions => ({
     type: LOGIN_USER_SUCCESS,
@@ -31,6 +32,8 @@ export const loginUser = (loginDto: ILoginDto) =>
                     id: decoded.sub
                 }
             }
+
+            setUserToken(response.data.token);
             
             dispatch(loginUserSuccess(authState));
             return true;

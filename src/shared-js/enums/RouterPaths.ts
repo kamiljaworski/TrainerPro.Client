@@ -6,7 +6,7 @@ enum RouterPaths {
     Trainers = '/Home/Trainers',
     UserProducts = '/Home/UserProducts',
     UserTrainings = '/Home/UserTrainings',
-    CreateTrainingPlan = '/Home/CreateTrainingPlan',
+    CreateTrainingPlan = '/Home/CreateTrainingPlan/{id}',
     MyClients = '/Home/MyClients'
 }
 

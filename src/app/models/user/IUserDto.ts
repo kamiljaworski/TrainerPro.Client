@@ -7,5 +7,6 @@ export default interface IUserDto {
     lastName: string,
     username: string,
     email: string,
-    roles: UserRoles[]
+    roles: UserRoles[],
+    sex?: string
 }

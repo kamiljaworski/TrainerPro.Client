@@ -37,7 +37,7 @@ const App: React.FC = () => {
               </Route>
             </Switch>
           </BrowserRouter>
-          <ToastContainer autoClose={2000} />
+          <ToastContainer autoClose={3500} />
         </ThemeProvider>
       </PersistGate>
     </Provider>

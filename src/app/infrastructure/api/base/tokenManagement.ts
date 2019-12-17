@@ -1,6 +1,4 @@
-import { ITokenDto } from "../../../models/authorization/dto/ITokenDto";
-
-const TOKEN_KEY = 'WARPSOLUTIONS_API_USER_TOKEN';
+const TOKEN_KEY = 'TRAINER_PRO_API_USER_TOKEN';
 
 const storage = window.localStorage || {
   getItem: () => undefined,
@@ -8,12 +6,12 @@ const storage = window.localStorage || {
   removeItem: () => undefined
 };
 
-export const getUserToken = (): ITokenDto => {
+export const getUserToken = (): string => {
   const serializedToken = storage.getItem(TOKEN_KEY);
   return serializedToken ? JSON.parse(serializedToken) : null;
 };
 
-export const setUserToken = (token: ITokenDto) => {
+export const setUserToken = (token: string) => {
   storage.setItem(TOKEN_KEY, JSON.stringify(token));
 };
 

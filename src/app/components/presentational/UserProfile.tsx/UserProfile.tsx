@@ -1,68 +1,64 @@
 import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Fade } from '@material-ui/core';
 import { useFormik } from 'formik';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Loader from '../../common/Loader/Loader';
 import styles from './UserProfile.module.scss';
 import UserProfileProps from './UserProfileProps';
 import IUserDto from '../../../models/user/IUserDto';
 import UserRoles from '../../../../shared-js/enums/UserRoles';
+import { isUserInRole } from '../../../helpers/UserHelper';
+import { client } from '../../../infrastructure/api/base/client';
+import { toast } from 'react-toastify';
 
 
 const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [currentUser, setCurrentUser] = useState<IUserDto>();
+    const isTrainer = isUserInRole(user, UserRoles.Trainer);
+
+    useEffect(() => {
+        (async function getUser() {
+            setIsLoading(true);
+            var user = await client.get('/api/Accounts')
+            setCurrentUser(user.data);
+            setIsLoading(false);
+        })();
+    }, [])
 
     const formik = useFormik({
-        initialValues: user,
-        onSubmit: async values => handleSubmit(values),
+        initialValues: currentUser ? currentUser : {} as any,
+        onSubmit: async values => handleSubmit(values as any),
         enableReinitialize: true,
     });
 
     async function handleSubmit(values: IUserDto) {
         setIsLoading(true);
+        var response = await client.patch('/api/Accounts', {...values, sex: 'M', firstName: values.firstName, lastName: values.lastName})
+
+        if(response.status === 200) {
+            toast.success("Update successfull");
+        }
+        
         setIsLoading(false);
     }
 
     return (
         <React.Fragment>
             <Loader isLoading={isLoading} />
+            {currentUser &&
             <Fade in={true}>
                 <Grid item xs={12} style={{width: '70%', margin: '50px auto 0 auto'}}>
                     <form onSubmit={formik.handleSubmit}>
                         <Grid container spacing={2} alignItems="center" alignContent="center" className={styles.smoothAppear}>
                             <Grid item xs={12}>
                                 <TextField
-                                    label="Username"
-                                    helperText={formik.errors.username}
-                                    name="username"
-                                    margin="normal"
-                                    variant="outlined"
-                                    value={formik.values.username}
-                                    onChange={formik.handleChange}
-                                    fullWidth
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    label="Email"
-                                    helperText={formik.errors.email}
-                                    name="email"
-                                    margin="normal"
-                                    variant="outlined"
-                                    type="text"
-                                    value={formik.values.email}
-                                    onChange={formik.handleChange}
-                                    fullWidth
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
                                     label="Name"
-                                    helperText={formik.errors.name}
-                                    name="name"
+                                    helperText={formik.errors.firstName}
+                                    name="firstName"
                                     margin="normal"
                                     variant="outlined"
                                     type="text"
-                                    value={formik.values.name}
+                                    value={formik.values.firstName}
                                     onChange={formik.handleChange}
                                     fullWidth
                                 />
@@ -80,7 +76,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                                     fullWidth
                                 />
                             </Grid>
-                            {user.roles.findIndex(x => x === UserRoles.Trainer) > 0
+                            {isTrainer
                                 ? <TrainerDetails />
                                 : <UserDetails formik={formik} />
                             }
@@ -93,6 +89,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                     </form>
                 </Grid>
             </Fade >
+            }
         </React.Fragment >
     );
 }

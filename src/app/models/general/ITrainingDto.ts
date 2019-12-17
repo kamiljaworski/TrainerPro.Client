@@ -4,5 +4,6 @@ export default interface ITrainingDto {
     name: string,
     repeats: number,
     series: number,
-    day: Days
+    day: Days,
+    username?: string;
 }

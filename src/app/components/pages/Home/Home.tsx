@@ -9,6 +9,7 @@ import RouterPaths from '../../../../shared-js/enums/RouterPaths';
 import Trainers from '../../presentational/Trainers/Trainers';
 import Products from '../../presentational/Products/Products';
 import UserTrainings from '../../presentational/UserTrainings/UserTrainings';
+import TrainerClients from '../../presentational/TrainerClients/TrainerClients';
 
 const Home: React.FC<HomeProps> = ({ user }) => {
     const history = useHistory();
@@ -39,6 +40,9 @@ const Home: React.FC<HomeProps> = ({ user }) => {
                     </Route>
                     <Route exact path={RouterPaths.UserTrainings}>
                         <UserTrainings user={user} />
+                    </Route>
+                    <Route exact path={RouterPaths.MyClients}>
+                        <TrainerClients />
                     </Route>
                 </Switch>
             </Container>
