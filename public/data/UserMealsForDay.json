@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Kurczak z ryżem",
+        "products": [
+            {
+                "name": "ryż",
+                "weight": 50
+            },
+            {
+                "name": "kurczak",
+                "weight": 150
+            }
+        ],
+        "kcal": 700
+    },
+    {
+        "name": "Hamburger",
+        "products": [
+            {
+                "name": "Mięso wołowe",
+                "weight": 200
+            },
+            {
+                "name": "Bułka",
+                "weight": 150
+            }
+        ],
+        "kcal": 500
+    }
+]

@@ -1,11 +1,12 @@
 import * as types from './authorizationTypes';
 import { AuthorizationState } from './authorizationState'
 import { LoginUserActions } from './loginUser/loginUserTypes';
+import IUserDto from '../../models/user/IUserDto';
 
 const initialState: AuthorizationState = {
     loggedIn: false,
-    token: null,
-    username: "Janusz"
+    token: '',
+    user: {} as IUserDto
 }
 
 type AuthorizationActions = LoginUserActions;

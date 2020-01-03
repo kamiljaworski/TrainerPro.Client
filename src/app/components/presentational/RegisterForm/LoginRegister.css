@@ -1,0 +1,11 @@
+
+.my-node-appear {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.my-node-appear-done {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: opacity 0.4s, transform .25s ease-in;
+}

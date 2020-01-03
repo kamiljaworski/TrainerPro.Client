@@ -1,15 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import NavigationBar from '../../layout/NavigationBar/NavigationBarContainer';
+import HomeProps from './HomeProps';
+import UserProfile from '../../presentational/UserProfile.tsx/UserProfile';
+import { Container } from '@material-ui/core';
 import styles from './Home.module.scss';
-import { HomeProps } from './HomeProps';
+import { Route, Switch, useHistory, useLocation } from 'react-router';
+import RouterPaths from '../../../../shared-js/enums/RouterPaths';
+import Trainers from '../../presentational/Trainers/Trainers';
+import Products from '../../presentational/Products/Products';
+import UserTrainings from '../../presentational/UserTrainings/UserTrainings';
+import TrainerClients from '../../presentational/TrainerClients/TrainerClients';
 
-const Home: React.FC<HomeProps> = ({ name }) => {
+const Home: React.FC<HomeProps> = ({ user }) => {
+    const history = useHistory();
+    const location = useLocation()
+
+    useEffect(() => {
+        if (location.pathname === RouterPaths.Base) {
+            history.push(RouterPaths.Home);
+        }
+    }, [history, location.pathname]);
+
     return (
-        <div className={styles.app}>
-            <header className={styles.appHeader}>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-            </header>
+        <div style={{ height: '80%' }}>
+            <NavigationBar />
+            <Container maxWidth="lg" className={styles.container}>
+                <Switch>
+                    <Route exact path={RouterPaths.Home}>
+                        <UserProfile user={user} />
+                    </Route>
+                    <Route exact path={RouterPaths.UserProfile}>
+                        <UserProfile user={user} />
+                    </Route>
+                    <Route exact path={RouterPaths.Trainers}>
+                        <Trainers />
+                    </Route>
+                    <Route exact path={RouterPaths.UserProducts}>
+                        <Products />
+                    </Route>
+                    <Route exact path={RouterPaths.UserTrainings}>
+                        <UserTrainings user={user} />
+                    </Route>
+                    <Route exact path={RouterPaths.MyClients}>
+                        <TrainerClients />
+                    </Route>
+                </Switch>
+            </Container>
         </div>
     );
 }

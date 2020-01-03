@@ -1,0 +1,14 @@
+[
+    {
+        "name": "pompki",
+        "repeats": 50,
+        "series": 5,
+        "dayId": 2
+    },
+    {
+        "name": "brzuszki",
+        "repeats": 20,
+        "series": 4,
+        "dayId": 1
+    }  
+]

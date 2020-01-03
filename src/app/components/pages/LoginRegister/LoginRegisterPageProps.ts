@@ -13,4 +13,4 @@ export interface OwnProps {
     text?: string
 }
 
-export interface LoginProps extends StateFromProps, DispatchFromProps, OwnProps {}; 
+export type LoginRegisterPageProps = StateFromProps & DispatchFromProps & OwnProps;
